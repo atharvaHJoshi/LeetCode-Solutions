@@ -1,26 +1,43 @@
 
-// better solution
+// optimal solution
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {
-
-        unordered_map < int , int > hashmap;
-
-        int n = nums.size();
-
-        for ( int i = 0 ; i < n ; i++ )
+    int majorityElement(vector<int>& arr) {
+       // code here
+        int count = 0;
+        int element = 0 ;
+        for ( int i = 0 ; i < arr.size() ; i++ )
         {
-            hashmap[ nums[i] ]++;
-        }
-
-        for ( auto it : hashmap )
-        {
-            if ( it.second > ( n / 2) )
+            if ( count == 0 )
             {
-                return it.first;
+                count = 1;
+                element = arr[i];
+            }
+            else if ( arr[i]  == element )
+            {
+                count++;
+            }
+            else
+            {
+                count--;
             }
         }
-
-        return {};
-    }
+        
+        int count1 = 0 ;
+        // ierate throughout the whole just to check which one element is actualy correct
+        for ( int i = 0 ; i < arr.size() ; i++ )
+        {
+            if (arr[i] == element )
+            {
+                count1++;
+            }
+        }
+        
+        if( count1 > ( arr.size() / 2) )
+        {
+            return element;
+        }
+        
+        
+        return -1;    }
 };
