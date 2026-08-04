@@ -1,4 +1,5 @@
-// Brute force solution
+// solution KADANE SOLUION
+
 
 class Solution {
 public:
