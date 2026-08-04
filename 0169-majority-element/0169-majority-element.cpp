@@ -1,26 +1,24 @@
 
-// brute foce solution
+// better solution
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
 
+        unordered_map < int , int > hashmap;
+
         int n = nums.size();
+
         for ( int i = 0 ; i < n ; i++ )
         {
-            int cnt = 0;
+            hashmap[ nums[i] ]++;
+        }
 
-            for ( int j = 0 ; j < n ; j++ )
+        for ( auto it : hashmap )
+        {
+            if ( it.second > ( n / 2) )
             {
-                if ( nums[i] == nums[j] )
-                {
-                    cnt++;
-                }
+                return it.first;
             }
-
-            if ( (n / 2) < cnt )
-            {
-                return nums[i];
-            } 
         }
 
         return {};
