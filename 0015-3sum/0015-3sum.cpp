@@ -1,7 +1,7 @@
-#include <vector>
-#include <algorithm>
+// optimal solution 
 
-using namespace std;
+// Time complexity : O(n²)
+// space coplexity : O(1)
 
 class Solution {
 public:
