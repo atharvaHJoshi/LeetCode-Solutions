@@ -1,22 +1,25 @@
-// BRUTE FORCE SOLUTION
-
-
+// OPTIMAL SOLUTION
+// decreasing the space complexity to O( n^2 ) from O(1) 
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
 
     int n = matrix.size();
-    int m = matrix[0].size();
+    
+    // transpose of matrix without creating any extra array 
+    for ( int i = 0 ; i < n - 1 ; i++ )
+    {
+        for ( int j = i + 1 ; j < n ; j++ )
+        {
+            swap( matrix[i][j] , matrix[j][i]);
+        }
+    }
 
-    vector< vector<int> > ans( n , vector<int>( m , 0) );
-
+    //revsering the array
     for ( int i = 0 ; i < n ; i++ )
     {
-        for ( int j = 0 ; j < n ; j++ )
-        {
-            ans[j][ n - 1 - i ] = matrix[i][j];
-        }
-    } 
-    matrix = ans;
+        reverse ( matrix[i].begin() , matrix[i].end() );
+    }
+
     }
 };
