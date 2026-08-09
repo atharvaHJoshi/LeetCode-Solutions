@@ -3,24 +3,24 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         int n = nums.size();
         vector<int> ls;
-        int target = n / 3; 
+        map< int , int > mp;
+        int mini =  n / 3;
 
-        for (int i = 0; i < n; i++) {
-            // Check whether if we have already added this number to our results or not
-            if (find(ls.begin(), ls.end(), nums[i]) != ls.end()) {
-                continue; 
-            }
+        for( int i = 0 ; i < n ; i++ )
+        {
+            mp[ nums[i] ]++;
+        }
 
-            int count = 0;
-            for (int j = 0; j < n; j++) {
-                if (nums[j] == nums[i]) {
-                    count++;
-                }
-            }
-            if (count > target) {
-                ls.push_back(nums[i]);
+        for( auto it : mp )
+        {
+            if ( it.second > mini )
+            {
+                ls.push_back(it.first );
             }
         }
+
+        sort( nums.begin() , nums.end() );
+
         return ls;
     }
 };
