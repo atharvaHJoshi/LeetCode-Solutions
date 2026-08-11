@@ -1,0 +1,36 @@
+// brute force is not working all test cases are satisfying but time limit exceeds 
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+        
+        int n = nums.size();
+        int maxLen= 0 ;
+        int left = 0 , right = 0 ;
+        int zeros  = 0 ;
+        while ( right < n )
+        {
+            if ( nums[right]  == 0 )
+            {
+                zeros++;
+            }
+
+            if ( zeros > k )
+            {
+                if ( nums[left] == 0 )
+                {
+                    zeros--;
+                }
+                left++;
+            }
+
+            if (zeros <= k )
+            {
+                int len = right - left + 1 ;
+                maxLen = max( maxLen , len );
+            }
+
+            right++;
+        }
+        return maxLen;
+    }
+};
