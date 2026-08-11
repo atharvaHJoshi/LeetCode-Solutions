@@ -1,4 +1,4 @@
-// brute force is not working all test cases are satisfying but time limit exceeds 
+// most optimal solution and with O(n) 
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
