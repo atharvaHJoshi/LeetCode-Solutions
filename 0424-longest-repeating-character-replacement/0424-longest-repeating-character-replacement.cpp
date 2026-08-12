@@ -18,11 +18,6 @@ public:
             if ( ((right - left + 1 ) - maxFreq) > k )
             {
                 hashmap[s[left] - 'A']--;
-                maxFreq = 0;
-                for( int i = 0 ; i < 26 ; i++ )
-                {
-                    maxFreq = max( maxFreq , hashmap[i] );
-                }
                 left = left + 1 ;
             }
 
