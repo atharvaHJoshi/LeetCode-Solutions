@@ -1,5 +1,4 @@
-//  better solution with TC of O( N + N)
-
+//  OPTIMAL SOLUTION
 
 class Solution {
 public:
