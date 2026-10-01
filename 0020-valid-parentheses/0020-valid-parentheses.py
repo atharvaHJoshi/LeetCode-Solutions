@@ -1,23 +1,13 @@
-#  brute force solution
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        for ch in s:
-            if ch == '(' or ch == '[' or ch == '{':
-                stack.append(ch)
+        close_to_open = {')': '(', ']': '[', '}': '{'}
+        
+        for c in s:
+            if c in close_to_open:
+                if not stack or stack.pop() != close_to_open[c]:
+                    return False
             else:
-                if not stack:
-                    return False
+                stack.append(c)
                 
-                top = stack.pop()
-
-                if ch == ')' and top != '(':
-                    return False;
-                
-                if ch == '}' and top != '{':
-                    return False
-                
-                if ch == ']' and top != '[':
-                    return False;
-
-        return len(stack) == 0 
+        return not stack
