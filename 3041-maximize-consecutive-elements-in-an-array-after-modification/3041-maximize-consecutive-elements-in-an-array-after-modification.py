@@ -1,0 +1,14 @@
+
+class Solution:
+    def maxSelectedElements(self, nums: list[int]) -> int:
+        nums.sort()
+        dp: dict[int, int] = {}
+        ans = 0
+
+        for x in nums:
+            # Update x + 1 first so a single element isn't used twice in one step
+            dp[x + 1] = dp.get(x, 0) + 1
+            dp[x] = dp.get(x - 1, 0) + 1
+            ans = max(ans, dp[x], dp[x + 1])
+
+        return ans
